@@ -10,19 +10,19 @@ class Solution
     //Function to find the next greater element for each element of the array.
     vector<long long> nextLargerElement(vector<long long> arr, int n){
         // Your code here
-        stack<long long int> st;
+        stack<long long> st;
         st.push(-1);
-        vector<long long int>v;
+        vector<long long> v;
         for(int i=n-1;i>=0;i--){
-            while(st.top()<arr[i] && st.top()!=-1){
-                st.pop();
-            }
-            v.push_back(st.top());
-            st.push(arr[i]);
+           while(st.top()<arr[i] && st.top()!=-1){
+               st.pop();
+           }
+           v.push_back(st.top());
+           st.push(arr[i]);
         }
-        
         reverse(v.begin(),v.end());
         return v;
+        
         
     }
 };
