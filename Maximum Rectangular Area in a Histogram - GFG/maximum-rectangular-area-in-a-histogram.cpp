@@ -26,18 +26,18 @@ class Solution
            
            s.push(i);
        }
-       while(!s.empty()){
-           s.pop();
-       }
-      
+    //   while(!s.empty()){
+    //       s.pop();
+    //   }
+      stack<long long> st;
        for(long long int i=n-1;i>=0;i--){
-           while(!s.empty() && arr[s.top()]>=arr[i]){
-               s.pop();
+           while(!st.empty() && arr[st.top()]>=arr[i]){
+               st.pop();
            }
            
-           s.empty() ? right[i]=n-1 : right[i]=s.top()-1;
+           st.empty() ? right[i]=n-1 : right[i]=st.top()-1;
            
-           s.push(i);
+           st.push(i);
        }
        
        for(long long int i=0;i<n;i++){
