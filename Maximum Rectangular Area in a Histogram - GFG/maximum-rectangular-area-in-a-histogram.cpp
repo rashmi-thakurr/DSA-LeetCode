@@ -22,7 +22,7 @@ class Solution
                s.pop();
            }
            
-           s.empty() ? left[i]=0 : left[i]=s.top()+1;
+           s.empty() ? left[i]=-1 : left[i]=s.top();
            
            s.push(i);
        }
@@ -35,13 +35,13 @@ class Solution
                st.pop();
            }
            
-           st.empty() ? right[i]=n-1 : right[i]=st.top()-1;
+           st.empty() ? right[i]=n : right[i]=st.top();
            
            st.push(i);
        }
        
        for(long long int i=0;i<n;i++){
-           area = max(area, (right[i]-left[i]+1)*arr[i]);
+           area = max(area, (right[i]-left[i]-1)*arr[i]);
        }
        
        return area;
