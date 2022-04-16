@@ -17,7 +17,7 @@ class Solution
             ans <<= 1;
             
             if(n&1){
-                ans = ans ^ 1;
+                ans = ans | 1;
             }
             
             n >>= 1;
