@@ -12,12 +12,26 @@ class Solution
     int sum(int a , int b)
     {
         //code here
-       if(b==0) return a;
-       if(a==0) return b;
-       
-       int carry = (a&b)<<1;
-       return sum(carry, a^b);
+      if(b==0) return a;
+      if(a==0) return b;
+       int carry;
+       int s;
+     while(carry){
+         carry = (a&b) << 1;
+         s = a^b;
+         a = s;
+         b = carry;
+     }
+     
+     return s;
     }
+    // int sum(int a, int b){
+    //     for(int i=0;i<b;i++){
+    //         a++;
+    //     }
+        
+    //     return a;
+    // }
 };
 
 // { Driver Code Starts.
