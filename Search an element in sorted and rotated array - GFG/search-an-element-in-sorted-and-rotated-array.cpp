@@ -48,7 +48,7 @@ int Search(vector<int> arr, int K) {
             return mid;
         }
         else if(arr[start]<=arr[mid]){
-            if(K>=arr[start] and K<=arr[mid]){
+            if(K>=arr[start] and K<arr[mid]){
                 end = mid-1;
             }
             else{
@@ -56,7 +56,7 @@ int Search(vector<int> arr, int K) {
             }
         }
         else if(arr[mid]<arr[end]){
-            if(K>=arr[mid] and K<=arr[end]){
+            if(K>=arr[mid] and K<arr[end]){
                 start = mid+1;
             }
             else{
