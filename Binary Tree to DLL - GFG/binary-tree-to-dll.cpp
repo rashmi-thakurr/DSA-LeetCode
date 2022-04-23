@@ -134,8 +134,8 @@ class Solution
     Node * bToDLL(Node *root)
     {
         // your code here
-        head = NULL;
-        prev = NULL;
+        // head = NULL;
+        // prev = NULL;
         
         btToDLL(root);
         
