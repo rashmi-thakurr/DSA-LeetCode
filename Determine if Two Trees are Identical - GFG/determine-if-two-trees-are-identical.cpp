@@ -39,15 +39,7 @@ class Solution
 {
     public:
     //Function to check if two trees are identical.
-    bool isSame(Node*left, Node* right){
-        
-        if(!left and !right) return true;
-        if(!left or !right) return false;
-        
-        if(left->data != right->data) return false;
-        
-        return isSame(left->left,right->left) and isSame(left->right,right->right);
-    }
+    
     bool isIdentical(Node *r1, Node *r2)
     {
         //Your Code here
