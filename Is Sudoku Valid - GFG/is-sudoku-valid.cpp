@@ -76,39 +76,39 @@ public:
            
        }
        
-       for(int k=0;k<9;k+=3)
-       {
-           for(int l=0;l<9;l+=3)
-           {
+      for(int k=0;k<9;k+=3)
+      {
+          for(int l=0;l<9;l+=3)
+          {
               int i=k;
                 unordered_map<int,int>map;
                
-               while(i!=k+3)
-               {
+              while(i!=k+3)
+              {
                   
                   int j=l;
-                   while(j!=l+3)
-                   {
-                       if(mat[i][j]==0){
-                       j++;
-                       continue;
-                       }
-                       map[mat[i][j]]++;
+                  while(j!=l+3)
+                  {
+                      if(mat[i][j]==0){
+                      j++;
+                      continue;
+                      }
+                      map[mat[i][j]]++;
                       
-                       if(map[mat[i][j]] >1  && mat[i][j]!=0)
-                       return 0;
+                      if(map[mat[i][j]] >1  && mat[i][j]!=0)
+                      return 0;
                        
                         j++;
-                   }
+                  }
                    
                    
-                   i++;
-               }
+                  i++;
+              }
                
                
-           }
+          }
            
-       }
+      }
        
        
        
