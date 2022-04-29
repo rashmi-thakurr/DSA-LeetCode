@@ -10,71 +10,37 @@ using namespace std;
 class Solution{
 public:
     int isValid(vector<vector<int>> mat){
-        // code here
-        // int row = mat.size();
-        // int col = mat[0].size();
-        
-        // for(int i=0;i<9;i++){
-        //     unordered_map<int,int> mp;
-        //     for(int j=0;j<9;j++){
-        //         if(mat[i][j]==0) continue;
-        //         mp[mat[i][j]]++;
-        //       if(mp[mat[i][j]]>1 and mat[i][j]!=0) return 0;
-        //     }
-        // }
-        
-        //  for(int i=0;i<9;i++){
-        //     unordered_map<int,int> mp;
-        //     for(int j=0;j<9;j++){
-        //         if(mat[j][i]==0) continue;
-        //         mp[mat[j][i]]++;
-        //         if(mp[mat[i][j]]>1 and mat[i][j]!=0) return 0;
-        //     }
-        // }
-        
-        //  for(int i=0;i<9;i+=3){
-        //     for(int j=0;j<9;j+=3){
-        //         unordered_map<int,int> mp;
-        //       for(int k=0;k<3;k++){
-        //           for(int l=0;l<3;l++){
-        //               if(mat[i+k][j+l]==0) continue;
-        //               mp[mat[i+k][j+l]]++;
-        //               if(mp[mat[i+k][j+l]]>1 and mat[i][j]!=0) return 0;
-        //           }
-        //       }
-        //     }
-        // }
-        
-       for(int i=0;i<9;i++)
-       {
-           unordered_map<int,int>map;
-           for(int j=0;j<9;j++)
-           {
-               if(mat[i][j]==0)
-               continue;
+     
+      for(int i=0;i<9;i++)
+      {
+          unordered_map<int,int>map;
+          for(int j=0;j<9;j++)
+          {
+              if(mat[i][j]==0)
+              continue;
             map[mat[i][j]]++;
             if(map[mat[i][j]]>1 && mat[i][j]!=0)
             return 0;
                
-           }
+          }
            
-       }
+      }
        
-       for(int i=0;i<9;i++)
-       {
-           unordered_map<int,int>map;
-           for(int j=0;j<9;j++)
-           {
-               if(mat[j][i]==0)
-               continue;
+      for(int i=0;i<9;i++)
+      {
+          unordered_map<int,int>map;
+          for(int j=0;j<9;j++)
+          {
+              if(mat[j][i]==0)
+              continue;
                
             map[mat[j][i]]++;
             if(map[mat[j][i]]>1 && mat[j][i]!=0)
             return 0;
                
-           }
+          }
            
-       }
+      }
        
       for(int k=0;k<9;k+=3)
       {
