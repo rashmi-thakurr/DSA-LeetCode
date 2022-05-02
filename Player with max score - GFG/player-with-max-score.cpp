@@ -9,10 +9,29 @@ using namespace std;
 
 class Solution{   
 public:
+int win(int arr[],vector<vector<int>> &dp,int start, int end){
+    if(start>end) return 0;
+    
+    if(dp[start][end]!=INT_MIN) return dp[start][end];
+    
+    int a = arr[start] - win(arr,dp,start+1,end);
+    int b = arr[end] - win(arr,dp,start,end-1);
+    
+    dp[start][end] = max(a,b);
+    
+    return dp[start][end];
+}
     bool is1winner(int N,int arr[]) {
         
         // code here
-        return N%2 == 0 ? true : false;
+        // return N%2 == 0 ? true : false;
+        //poor test cases...
+        
+        vector<vector<int>> dp(N,vector<int>(N,INT_MIN));
+        
+        return win(arr,dp,0,N-1) >= 0;
+        
+        
     }
 };
 
