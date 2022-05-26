@@ -39,20 +39,20 @@ class Solution
             end_col--;
         }
         
-       if(start_col != end_col and start_row == end_row){
+      if(start_col != end_col and start_row == end_row){
             for(int i=start_col;i<=end_col;i++){
                 v.push_back(matrix[start_row][i]);
             }
-       }
+      }
        
-       if(start_row!= end_row and start_col == end_col){
-           for(int j=start_row;j<=end_row;j++){
+      if(start_row!= end_row and start_col == end_col){
+          for(int j=start_row;j<=end_row;j++){
                 v.push_back(matrix[j][end_col]);
             }
-       }
-       if(start_row == start_col and end_row == end_col and start_row == end_row){
-           v.push_back(matrix[start_row][start_col]);
-       }
+      }
+      if(start_row == start_col and end_row == end_col and start_row == end_row){
+          v.push_back(matrix[start_row][start_col]);
+      }
         return v;
     }
 };
