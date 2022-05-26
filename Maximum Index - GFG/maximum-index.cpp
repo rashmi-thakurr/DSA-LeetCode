@@ -18,18 +18,20 @@ class Solution{
         for(int i=1;i<N;i++){
             leftmin[i] = min(leftmin[i-1],A[i]);
         }
-        int i=N-1,j=N-1;
+        int i=N-1;
+        int j=N-1;
         int ans = INT_MIN;
+        
         while(i>=0 and j>=0){
             if(A[j]>=leftmin[i]){
                 ans = max(ans,j-i);
                 i--;
+                
             }
             else{
                 j--;
             }
         }
-        
         return ans;
     }
 };
