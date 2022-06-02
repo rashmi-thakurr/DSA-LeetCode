@@ -12,26 +12,25 @@ class Solution
     string reverseWords(string S) 
     { 
         // code here 
-        string st;
-        int i = S.length()-1;
-        int len=0;
-        
-        while(i>=-1){
-            if(S[i]=='.'){
-                string x = S.substr(i+1,len);
-                st += x;
-                st += ".";
-                len=0;
-            }
-            else{
-                len++;
-            }
-           i--;
-        }
-        
-        st += S.substr(0,len-1);
-        
-        return st;
+        int n = S.length();
+       vector<string> v;
+       int i=0;
+       int j=0;
+       while(i<n and j<n){
+          while(S[j]!='.' and j<n){
+              j++;
+          } 
+          v.push_back(S.substr(i,j-i));
+          i=j+1;
+          j=j+1;
+          
+       }
+       string ans;
+       for(int i=v.size()-1;i>=0;i--){
+           ans += v[i];
+           if(i!=0) ans += '.';
+       }
+       return ans;
     } 
 };
 
