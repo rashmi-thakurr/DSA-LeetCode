@@ -1,22 +1,24 @@
 class Solution {
 public:
     void nextPermutation(vector<int>& nums) {
-//         string s;
-//         for(int i=0;i<nums.size();i++){
-//             s += to_string(nums[i]);
-//         }
-//         string s1 = s;
-//         next_permutation(s.begin(),s.end());
-//         if(s<s1){
-//             sort(nums.begin(),nums.end());
-//             return;
-//         }
+        int n=nums.size();
+        int l,r;
         
-//         for(int i=0;i<nums.size();i++){
-//            nums[i] = s[i] - '0';
-//         }
+        for(l=n-2;l>=0;l--){
+            if(nums[l]<nums[l+1]) break;
+        }
         
-         next_permutation(nums.begin(),nums.end());
+        if(l<0){
+            reverse(nums.begin(),nums.end());
+        }
+        else{
+            for(r=n-1;r>l;r--){
+                if(nums[l]<nums[r])break;
+            }
+            
+            swap(nums[l],nums[r]);
+            reverse(nums.begin()+l+1,nums.end());
+        }
         
         return;        
     }
