@@ -26,7 +26,7 @@ long long merge(long long arr[], long long start, long long mid, long long end){
     for(long long int i=0;i<n1;i++){
         a[i] = arr[start+i];
     }
-    for(long long int i=0;i<n1;i++){
+    for(long long int i=0;i<n2;i++){
         b[i] = arr[mid+1+i];
     }
     long long i=0;
