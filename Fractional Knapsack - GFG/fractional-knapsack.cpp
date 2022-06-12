@@ -22,31 +22,35 @@ class Solution
 {
     public:
     //Function to get the maximum total value in the knapsack.
-    static bool compare(Item a, Item b){
-        double ratio1 = (double)a.value/(double)a.weight;
-        double ratio2 = (double)b.value/(double)b.weight;
-        return ratio1 > ratio2;
+    static bool comp(Item a, Item b){
+        return (double) a.value / (double) a.weight  > (double) b.value / (double) b.weight;
     }
+  
     double fractionalKnapsack(int W, Item arr[], int n)
     {
         // Your code here
-        sort(arr,arr+n,compare);
+        
+        sort(arr,arr+n,comp);
+        
         double profit = 0.0;
+        
         int wt = 0;
         
         for(int i=0;i<n;i++){
-            if(arr[i].weight + wt <= W){
-                profit +=  arr[i].value;
+            if(wt + arr[i].weight <= W){
+                profit += arr[i].value;
                 wt += arr[i].weight;
             }
             else{
                 int remain = W-wt;
-                profit += (double)remain / (double)arr[i].weight * (double)arr[i].value;
+                profit += (double) remain/arr[i].weight * arr[i].value;
                 break;
             }
         }
         
+        
         return profit;
+    
     }
         
 };
