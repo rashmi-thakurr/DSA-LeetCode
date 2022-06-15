@@ -8,48 +8,35 @@ class Solution{
     public:
     int kthElement(int arr1[], int arr2[], int n, int m, int k)
     {
-        int c=0;
-      
-        int i=0;
-        int j=0;
-        int x;
-        
-        while(i<n && j<m){
-          if(arr1[i]<arr2[j]){
-             
-              c++;
-              if(c == k){
-                  return arr1[i];
-              }
-               i++;
-             
-          } else{
-             
-              c++;
-              if(c == k){
-                  return arr2[j];
-              }
-               j++;
+      int ptr1 = 0;
+      int ptr2 = 0;
+      int count = 0;
+      while(ptr1<n and ptr2<m){
+          if(arr1[ptr1]<=arr2[ptr2]){
+              count++;
+              if(count==k) return arr1[ptr1];
+              ptr1++;
           }
-        }
-        
-      while(i<n){
-         
-          c++;
-            if(c == k){
-                return arr1[i];
-            } 
-             i++;
-        }
-        
-        while(j<m){
-          
-          c++;
-            if(c == k){
-                return arr2[j];
-            } 
-            j++;
-        }
+          else{
+              count++;
+              if(count==k) return arr2[ptr2];
+              ptr2++;
+          }
+      }
+      
+      while(ptr1<n){
+          count++;
+          if(count==k) return arr1[ptr1];
+          ptr1++;
+      }
+      
+       while(ptr2<m){
+           count++;
+            if(count==k) return arr2[ptr2];
+          ptr2++;
+      }
+      
+      return 0;
     }
 };
 
