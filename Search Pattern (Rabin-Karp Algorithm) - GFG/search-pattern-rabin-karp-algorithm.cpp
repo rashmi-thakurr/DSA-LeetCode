@@ -14,7 +14,7 @@ class Solution
             if(s.length()==0) return 0;
             long long int hash = 0;
             for(int i=0;i<s.length();i++){
-                hash = (hash*256 + s[i]) % mod;
+                hash = (hash*31 + (s[i]-'a'+1)) % mod;
             }
             return hash;
         }
@@ -30,7 +30,7 @@ class Solution
             int n = s.length();
             long long int h=1;
             for (int i = 0; i < m - 1; i++) 
-                h = (h * 256) % mod; 
+                h = (h * 31) % mod; 
 
             
             long long int hash = 0;
@@ -41,7 +41,7 @@ class Solution
                     hash = calculate_hash(s.substr(i,m));
                 }
                 else{
-                    hash = ((256*(hash - s[i-1]*h%mod))%mod + s[i+m-1])%mod; 
+                    hash = ((31*(hash - (s[i-1]-'a'+1)*+h%mod))%mod + s[i+m-1]-'a'+1)%mod; 
                     if (hash < 0) 
                         hash = (hash + mod); 
                 }
