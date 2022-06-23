@@ -113,18 +113,12 @@ void findPreSuc(Node* root, Node*& pre, Node*& suc, int key)
 // Your code goes here
    if(!root) return;
    if(root->key == key) {
-      if(root->left){
-        Node* p = root->left; 
-        while(p->right) p=p->right;
-        pre = p;
-        
-      }
-      if(root->right){
-           Node* q = root->right;
-           while(q->left) q=q->left;
-           suc = q;
-      }
-      
+       Node* p = root->left;
+       Node* q = root->right;
+       while(p and p->right) p=p->right;
+       while(q and q->left) q=q->left;
+       if(root->left) pre = p;
+       if(root->right)suc = q;
    }
    else if(root->key < key){
        pre = root;
