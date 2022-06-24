@@ -97,42 +97,18 @@ struct Node {
 class Solution
 {
     public:
-    void inorder(Node* root, int &K, int &ans){
-        if(!root) return;
-        inorder(root->right,K,ans);
-        K--;
-        if(K==0){
-            ans = root->data;
-            return;
-        }
-        inorder(root->left,K,ans);
+    int numOfNodes(Node* root){
+        if(!root) return 0;
+        return 1+numOfNodes(root->left)+numOfNodes(root->right);
     }
-    int kthLargest(Node *root, int K)
+  
+    int kthLargest(Node *root, int k)
     {
-        //Your code here
-        // vector<int> v;
-        // stack<Node*> s;
-        // Node* p = root;
-        // while(!s.empty() or p){
-        //     if(p){
-        //         s.push(p);
-        //         p=p->left;
-              
-        //     }else{
-        //         p = s.top();
-        //         s.pop();
-        //         v.push_back(p->data);
-        //         p = p->right;
-        //     }
-        // }
-        
-        // if(K > v.size()) return -1;
-        
-        // return v[v.size() - K];
-        
-        int ans = 0;
-        inorder(root,K,ans);
-        return ans;
+      int n = numOfNodes(root->right);
+      if(n==k-1) return root->data;
+      else if(n > k-1) return kthLargest(root->right,k);
+      else return kthLargest(root->left,k-n-1);
+      
     }
 };
 
