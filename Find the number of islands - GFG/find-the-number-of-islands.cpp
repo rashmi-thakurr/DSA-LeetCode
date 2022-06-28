@@ -6,39 +6,39 @@ using namespace std;
 class Solution {
   public:
     // Function to find the number of islands.
-    void dfs(int i,int j,vector<vector<char>> &grid){
-        if(i<0 or j<0) return;
-        if(i>=grid.size() or j>=grid[0].size()) return;
-        if(grid[i][j]!='1') return;
-        grid[i][j] = '2';
-        
-        dfs(i-1,j-1,grid);
-        dfs(i-1,j+1,grid);
-        dfs(i-1,j,grid);
-        dfs(i+1,j,grid);
-        dfs(i,j-1,grid);
-        dfs(i,j+1,grid);
-        dfs(i-1,j+1,grid);
-        dfs(i+1,j-1,grid);
-        dfs(i+1,j+1,grid);
+    void bfs(vector<vector<char>>& grid, int i, int j){
+        grid[i][j]='2';
+        //top
+        if(i-1>=0 and grid[i-1][j]=='1') bfs(grid,i-1,j);
+        //down
+        if(i+1<grid.size() and grid[i+1][j]=='1') bfs(grid,i+1,j);
+        //left
+        if(j-1>=0 and grid[i][j-1]=='1') bfs(grid,i,j-1);
+        //right
+        if(j+1<grid[0].size() and grid[i][j+1]=='1') bfs(grid,i,j+1);
+        //diagonally up left
+        if(i-1>=0 and j-1>=0 and grid[i-1][j-1]=='1') bfs(grid,i-1,j-1);
+        //diagonally up right
+        if(i-1>=0 and j+1<grid[0].size() and grid[i-1][j+1]=='1') bfs(grid,i-1,j+1);
+        //diagonally down left
+        if(i+1<grid.size() and j-1>=0 and grid[i+1][j-1]=='1') bfs(grid,i+1,j-1);
+        //diagonally down right
+        if(i+1<grid.size() and j+1<grid[0].size() and grid[i+1][j+1]=='1') bfs(grid,i+1,j+1);
         
         
     }
     int numIslands(vector<vector<char>>& grid) {
         // Code here
-        int r = grid.size();
-        int c = grid[0].size();
-        int count=0;
-        for(int i=0;i<r;i++){
-            for(int j=0;j<c;j++){
+        int num=0;
+        for(int i=0;i<grid.size();i++){
+            for(int j=0;j<grid[0].size();j++){
                 if(grid[i][j]=='1'){
-                    count++;
-                    dfs(i,j,grid);
+                    bfs(grid,i,j);
+                    num++;
                 }
             }
         }
-        
-        return count;
+        return num;
     }
 };
 
